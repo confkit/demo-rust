@@ -26,3 +26,4 @@ path = "CHANGELOG.md"
 auto = true
 # 生成 changelog
 generate = true
+filter-commits = false
