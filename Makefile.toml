@@ -1,0 +1,85 @@
+[config]
+default_to_workspace = false
+
+[tasks.dev]
+dependencies = [
+  "clean",
+  "check-format",
+  "clippy",
+  "test",
+  "build",
+]
+description = "Development workflow - clean, check, test, and build"
+
+[tasks.clean]
+args = ["clean"]
+command = "cargo"
+description = "Clean build artifacts"
+
+[tasks.check-format]
+args = ["fmt", "--", "--check"]
+command = "cargo"
+description = "Check code formatting"
+
+[tasks.format]
+args = ["fmt"]
+command = "cargo"
+description = "Format code"
+
+[tasks.clippy]
+args = [
+  "clippy",
+  "--all-targets",
+  "--all-features",
+  "--",
+  "-W",
+  "clippy::complexity",
+  "-W",
+  "clippy::correctness",
+  "-A",
+  "dead_code",
+  "-A",
+  "unused_imports",
+  "-A",
+  "unused_variables",
+]
+command = "cargo"
+description = "Run clippy lints"
+
+[tasks.test]
+args = ["test"]
+command = "cargo"
+description = "Run tests"
+
+[tasks.build]
+args = ["build"]
+command = "cargo"
+description = "Build the project"
+
+[tasks.run]
+args = ["run", "--", "--help"]
+command = "cargo"
+description = "Run the application with help"
+
+[tasks.release]
+args = ["build", "--release"]
+command = "cargo"
+description = "Build release version"
+
+[tasks.check]
+args = ["check"]
+command = "cargo"
+description = "Check compilation without building"
+
+[tasks.watch]
+args = ["watch", "-x", "check", "-x", "test", "-i", "examples/**/*", "-i", "docs/**/*"]
+command = "cargo"
+description = "Watch for changes and rebuild"
+install_crate = "cargo-watch"
+
+[tasks.install-deps]
+description = "Install development dependencies"
+script = [
+  "cargo install cargo-watch",
+  "cargo install cargo-make",
+]

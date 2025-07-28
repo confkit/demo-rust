@@ -2,6 +2,19 @@
 name = "demo-rust"
 version = "0.1.0"
 edition = "2024"
+authors = ["confkit team"]
+description = "A demo rust project"
+license = "MIT"
+repository = "https://github.com/confkit/engine"
+exclude = [
+  "example/**",
+  "docs/**/*",
+  "tests/**/*",
+  ".cursor/**/*",
+  ".vscode/**/*",
+  ".git/**/*",
+  ".gitignore"
+]
 
 [dependencies]
 axum = "0.8.4"
