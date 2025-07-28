@@ -24,3 +24,5 @@ package = true
 path = "CHANGELOG.md"
 # 启用自动生成 changelog
 auto = true
+# 生成 changelog
+generate = true
