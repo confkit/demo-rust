@@ -1,0 +1,26 @@
+# git-cliff 配置文件
+[changelog]
+header = """
+# Changelog\n
+All notable changes to this project will be documented in this file.\n
+"""
+template = """
+{% if version %}\
+## [{{ version | trim_start_matches(pat="v") }}] - {{ timestamp | date(format="%Y-%m-%d") }}
+{% else %}\
+## [unreleased]
+{% endif %}\
+{% for group, commits in commits | group_by(attribute="group") %}
+### {{ group | upper_first }}
+{% for commit in commits %}
+- {% if commit.breaking %}[**breaking**] {% endif %}{{ commit.message | upper_first }}\
+{% endfor %}
+{% endfor %}\n
+"""
+
+[git]
+conventional_commits = true
+filter_unconventional = true
+
+[git.conventional_commits]
+types = ["feat", "fix", "perf", "refactor", "style", "test", "build", "ci", "docs", "chore"]
