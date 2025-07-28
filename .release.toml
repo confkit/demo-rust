@@ -19,11 +19,4 @@ allow-branch = ["main"]
 # 使用工作目录而不是 Git tracked files
 package = true
 
-# 使用 cargo-release 的标准 changelog 功能
-[changelog]
-path = "CHANGELOG.md"
-# 启用自动生成 changelog
-auto = true
-# 生成 changelog
-generate = true
-filter-commits = false
+pre-release-hook = ["git", "cliff", "-o", "CHANGELOG.md", "--tag", "{{version}}" ]
