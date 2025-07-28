@@ -16,7 +16,4 @@ sign-tag = false
 # 跳过验证（比如 workspace 检查）
 allow-branch = ["main"]
 
-# 使用工作目录而不是 Git tracked files
-package = true
-
 pre-release-hook = ["git", "cliff", "-o", "CHANGELOG.md", "--tag", "{{version}}" ]
