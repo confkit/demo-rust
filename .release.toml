@@ -14,19 +14,13 @@ sign-commit = false
 sign-tag = false
 
 # 跳过验证（比如 workspace 检查）
-# 如果你遇到 workspace 错误也可以设置
-allow-branch = ["main"]  # 可选：限制只能在 main 分支操作
+allow-branch = ["main"]
 
 # 使用工作目录而不是 Git tracked files
-# 避免一些未跟踪文件的问题
 package = true
 
-# 使用 git-cliff 生成 changelog
+# 使用 cargo-release 的标准 changelog 功能
 [changelog]
 path = "CHANGELOG.md"
-# 使用 git-cliff 生成 changelog
-generator = "git-cliff"
-# git-cliff 配置文件路径
-config = ".cliff.toml"
-# 发布前生成 changelog
-pre-release = true
+# 启用自动生成 changelog
+auto = true
