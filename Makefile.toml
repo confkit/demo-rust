@@ -79,6 +79,8 @@ script = [
   "cargo install cargo-make",
 ]
 
+# Linux targets
+
 [tasks.setup-linux-x86_64]
 args = ["target", "add", "x86_64-unknown-linux-gnu"]
 command = "rustup"
@@ -90,16 +92,18 @@ command = "rustup"
 description = "Setup Linux aarch64 target"
 
 [tasks.build-x86_64-unknown-linux-gnu]
-args = ["build", "--release", "--target", "x86_64-unknown-linux-gnu"]
-command = "cargo"
+args = ["build", "--target", "x86_64-unknown-linux-gnu", "--release"]
+command = "cross"
 dependencies = ["setup-linux-x86_64"]
 description = "Build release version for x86_64-unknown-linux-gnu"
 
 [tasks.build-aarch64-unknown-linux-gnu]
-args = ["build", "--release", "--target", "aarch64-unknown-linux-gnu"]
-command = "cargo"
+args = ["build", "--target", "aarch64-unknown-linux-gnu", "--release"]
+command = "cross"
 dependencies = ["setup-linux-aarch64"]
 description = "Build release version for aarch64-unknown-linux-gnu"
+
+# macOS targets
 
 [tasks.setup-macos-x86_64]
 args = ["target", "add", "x86_64-apple-darwin"]
@@ -112,14 +116,14 @@ command = "rustup"
 description = "Setup macOS aarch64 target"
 
 [tasks.build-x86_64-apple-darwin]
-args = ["build", "--release", "--target", "x86_64-apple-darwin"]
-command = "cargo"
+args = ["build", "--target", "x86_64-apple-darwin", "--release"]
+command = "cross"
 dependencies = ["setup-macos-x86_64"]
 description = "Build release version for x86_64-apple-darwin"
 
 [tasks.build-aarch64-apple-darwin]
-args = ["build", "--release", "--target", "aarch64-apple-darwin"]
-command = "cargo"
+args = ["build", "--target", "aarch64-apple-darwin", "--release"]
+command = "cross"
 dependencies = ["setup-macos-aarch64"]
 description = "Build release version for aarch64-apple-darwin"
 
