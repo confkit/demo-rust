@@ -145,3 +145,23 @@ dependencies = [
 ]
 description = "Build release version for Linux"
 
+# Windows targets
+
+[tasks.setup-windows-x86_64]
+args = ["target", "add", "x86_64-pc-windows-msvc"]
+command = "rustup"
+description = "Setup Windows x86_64 target"
+
+[tasks.build-x86_64-pc-windows-msvc]
+args = ["build", "--target", "x86_64-pc-windows-msvc", "--release"]
+command = "cargo"
+dependencies = ["setup-windows-x86_64"]
+description = "Build release version for x86_64-pc-windows-msvc"
+
+[tasks.build-windows]
+args = ["Build release version for Windows"]
+command = "echo"
+dependencies = [
+  "build-x86_64-pc-windows-msvc",
+]
+description = "Build release version for Windows"
