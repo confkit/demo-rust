@@ -127,24 +127,6 @@ command = "cargo"
 dependencies = ["setup-macos-aarch64"]
 description = "Build release version for aarch64-apple-darwin"
 
-[tasks.build-macos]
-args = ["Build release version for macOS"]
-command = "echo"
-dependencies = [
-  "build-x86_64-apple-darwin",
-  "build-aarch64-apple-darwin",
-]
-description = "Build release version for macOS"
-
-[tasks.build-linux]
-args = ["Build release version for Linux"]
-command = "echo"
-dependencies = [
-  "build-x86_64-unknown-linux-gnu",
-  "build-aarch64-unknown-linux-gnu",
-]
-description = "Build release version for Linux"
-
 # Windows targets
 
 [tasks.setup-windows-x86_64]
@@ -165,3 +147,33 @@ dependencies = [
   "build-x86_64-pc-windows-msvc",
 ]
 description = "Build release version for Windows"
+
+# Build for all targets
+
+[tasks.build-macos]
+args = ["Build release version for macOS"]
+command = "echo"
+dependencies = [
+  "build-x86_64-apple-darwin",
+  "build-aarch64-apple-darwin",
+]
+description = "Build release version for macOS"
+
+[tasks.build-linux]
+args = ["Build release version for Linux"]
+command = "echo"
+dependencies = [
+  "build-x86_64-unknown-linux-gnu",
+  "build-aarch64-unknown-linux-gnu",
+]
+description = "Build release version for Linux"
+
+[tasks.build-win]
+args = ["Build release version for Windows"]
+command = "echo"
+dependencies = [
+  "build-x86_64-pc-windows-msvc",
+]
+description = "Build release version for Windows"
+
+
