@@ -99,7 +99,7 @@ description = "Build release version for x86_64-unknown-linux-gnu"
 
 [tasks.build-aarch64-unknown-linux-gnu]
 args = ["build", "--target", "aarch64-unknown-linux-gnu", "--release"]
-command = "cross"
+command = "cargo"
 dependencies = ["setup-linux-aarch64"]
 description = "Build release version for aarch64-unknown-linux-gnu"
 
